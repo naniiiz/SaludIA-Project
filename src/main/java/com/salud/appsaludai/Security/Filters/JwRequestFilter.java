@@ -1,5 +1,6 @@
 package com.salud.appsaludai.Security.Filters;
 
+import com.salud.appsaludai.Security.Services.CustomUserDetails;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +15,7 @@ import java.io.IOException;
 
 @Component
 public class JwRequestFilter {
-    private final CustomUserDetailsService userDetailsService;
+    private final CustomUserDetails userDetailsService;
     private final JwtUtil jwtUtil;
 
     public JwtRequestFilter(CustomUserDetailsService userDetailsService, JwtUtil jwtUtil) {

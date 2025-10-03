@@ -1,5 +1,6 @@
 package com.salud.appsaludai.Security.Config;
 
+import com.salud.appsaludai.Security.Services.CustomUserDetails;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,11 +19,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
-    private final CustomUserDetailsService userDetailsService;
+    private final CustomUserDetails userDetailsService;
     private final JwtRequestFilter jwtRequestFilter;
 
     //Inyectando JWT Filter por constructor
-    public SecurityConfig(CustomUserDetailsService userDetailsService, JwtRequestFilter jwtRequestFilter) {
+    public SecurityConfig(CustomUserDetails userDetailsService, JwtRequestFilter jwtRequestFilter) {
         this.userDetailsService = userDetailsService;
         this.jwtRequestFilter = jwtRequestFilter;
     }
