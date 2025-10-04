@@ -5,12 +5,17 @@ import com.salud.appsaludai.security.dtos.AuthResponseDTO;
 import com.salud.appsaludai.security.services.CustomUserDetailsService;
 import com.salud.appsaludai.security.services.UserService;
 import com.salud.appsaludai.security.util.JwtUtil;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @CrossOrigin
 @RestController
@@ -32,6 +37,18 @@ public class AuthController {
                 new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
         );
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getUsername());
-        final String token =
+        final String token = jwtUtil.generateToken(userDetails);
+
+        Set<String> roles = userDetails.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toSet());
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Authorizacion", token);
+        AuthResponseDTO authResponseDTO = new AuthResponseDTO();
+        authResponseDTO.setRoles(roles);
+        authResponseDTO.setJwt(token);
+        return ResponseEntity.ok().headers(responseHeaders).body(authResponseDTO);
+    }
 }
 

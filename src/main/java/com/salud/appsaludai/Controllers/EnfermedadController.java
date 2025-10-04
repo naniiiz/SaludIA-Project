@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/SaludAI/")
 public class EnfermedadController {
     @Autowired
     private IEnfermedadServices enfermedadService;
