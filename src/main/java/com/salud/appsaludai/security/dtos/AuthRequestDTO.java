@@ -1,6 +1,6 @@
-package com.salud.appsaludai.Security.DTO;
+package com.salud.appsaludai.security.dtos;
 
-public class RoleSecurityDTO {
+public class AuthRequestDTO {
     private String username;
     private String password;
     // getters and setters

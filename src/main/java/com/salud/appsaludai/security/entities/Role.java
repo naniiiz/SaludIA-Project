@@ -1,4 +1,5 @@
-package com.salud.appsaludai.Security.Entidades;
+package com.salud.appsaludai.security.entities;
+
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,6 +12,7 @@ import lombok.*;
 @Table(name = "roles")
 @Data
 public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

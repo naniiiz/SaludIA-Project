@@ -1,4 +1,4 @@
-package com.salud.appsaludai.Security.Entidades;
+package com.salud.appsaludai.security.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,6 +14,7 @@ import java.util.Set;
 @Table(name = "users")
 @Data
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
