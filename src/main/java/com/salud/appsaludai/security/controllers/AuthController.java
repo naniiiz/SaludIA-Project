@@ -3,7 +3,6 @@ package com.salud.appsaludai.security.controllers;
 import com.salud.appsaludai.security.dtos.AuthRequestDTO;
 import com.salud.appsaludai.security.dtos.AuthResponseDTO;
 import com.salud.appsaludai.security.services.CustomUserDetailsService;
-import com.salud.appsaludai.security.services.UserService;
 import com.salud.appsaludai.security.util.JwtUtil;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
